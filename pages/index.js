@@ -20,7 +20,7 @@ export default function Index({ posts, globalData }) {
         </h1>
         {/* Company motto */}
         <p className="mb-12 text-xl text-center italic text-gray-600 dark:text-gray-300">
-          "We solve problems you did not know you have in the ways you don't need to understand"
+          &ldquo;We solve problems you did not know you have in the ways you don&apos;t need to understand&rdquo;
         </p>
         {/* Blog posts list container */}
         <ul className="w-full">
