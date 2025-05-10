@@ -22,14 +22,14 @@ export default function Index({ posts, globalData }) {
         <p className="mb-12 text-xl text-center italic text-gray-600 dark:text-gray-300">
           &ldquo;We solve problems you did not know you have in the ways you don&apos;t need to understand&rdquo;
         </p>
-        {/* Blog posts list container */}
-        <ul className="w-full">
+        {/* Blog posts list container - Add gap here */}
+        <ul className="flex flex-col gap-16">
           {/* Map through all blog posts and create a tile for each */}
           {posts.map((post) => (
             <li
               key={post.filePath}
               // Styling for the blog tile container with hover effects and responsive design
-              className="transition border border-b-0 bg-white/10 border-gray-800/10 md:first:rounded-t-lg md:last:rounded-b-lg backdrop-blur-lg dark:bg-black/30 hover:bg-white/20 dark:hover:bg-black/50 dark:border-white/10 last:border-b"
+              className="transition border bg-white/10 border-gray-800/10 md:first:rounded-t-lg md:last:rounded-b-lg backdrop-blur-lg dark:bg-black/30 hover:bg-white/20 dark:hover:bg-black/50 dark:border-white/10"
               data-sb-object-id={`posts/${post.filePath}`}
             >
               {/* Link wrapper for the entire blog tile */}
@@ -40,7 +40,7 @@ export default function Index({ posts, globalData }) {
                 className="block focus:outline-hidden focus:ring-4 focus:ring-primary/50"
               >
                 {/* Post image */}
-                <div className="relative w-full h-48 md:h-64">
+                <div className="relative w-full aspect-video">
                   <Image
                     src={post.data.image || '/images/Picture_Placeholder.jpg'}
                     alt={post.data.title}

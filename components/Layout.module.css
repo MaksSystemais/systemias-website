@@ -8,10 +8,10 @@
     ),
     radial-gradient(at 36% 47%, var(--color-gradient-3) 0, transparent 50%),
     radial-gradient(at 54% 29%, var(--color-gradient-3) 0, transparent 28%),
-    radial-gradient(at 45% 51%, var(--color-gradient-1) 0, transparent 53%),
-    radial-gradient(at 73% 44%, var(--color-gradient-2) 0, transparent 54%),
-    radial-gradient(at 24% 7%, var(--color-gradient-2) 0, transparent 40%),
-    radial-gradient(at 76% 46%, var(--color-gradient-1) 0, transparent 50%);
+    radial-gradient(at 45% 51%, var(--color-gradient-1) 0, transparent 53%);
+    /*radial-gradient(at 73% 44%, var(--color-gradient-2) 0, transparent 54%);
+    /*radial-gradient(at 24% 7%, var(--color-gradient-2) 0, transparent 40%),*/
+    /*radial-gradient(at 76% 46%, var(--color-gradient-1) 0, transparent 50%);
   /* mix-blend-mode: normal; */
   max-height: 800px;
   height: 80vh;
@@ -20,6 +20,13 @@
   width: 100%;
   filter: blur(44px);
   z-index: -1;
+  /* Add opacity control for light/dark mode */
+  opacity: 0.3;
+}
+
+/* Add dark mode specific styles */
+:global(.dark) .colorBackground {
+  opacity: 0.6;
 }
 
 .colorBackgroundBottom {
@@ -43,4 +50,11 @@
   width: 100%;
   filter: blur(44px);
   z-index: -1;
+  /* Add opacity control for light/dark mode */
+  opacity: 0.2;
+}
+
+/* Add dark mode specific styles */
+:global(.dark) .colorBackgroundBottom {
+  opacity: 0.1;
 }

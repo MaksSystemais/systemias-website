@@ -20,6 +20,7 @@ export default defineStackbitConfig({
                         { name: "title", type: "string", required: true, default: 'Post Title' }, 
                         { name: "description", type: "string", default: 'Post description goes here' },
                         { name: "date", type: "date", required: true },
+                        { name: "image", type: "image", default: '/images/Picture_Placeholder.jpg' }
                     ]
                   }
             ],
