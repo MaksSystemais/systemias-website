@@ -20,7 +20,7 @@ export default function Index({ posts, globalData }) {
         </h1>
         {/* Company motto */}
         <p className="mb-12 text-xl text-center italic text-gray-600 dark:text-gray-300">
-          &ldquo;We solve problems you did not know you have in the ways you don&apos;t need to understand&rdquo;
+          &ldquo;We solve problems you did not know you have&rdquo;
         </p>
         {/* Blog posts list container - Add gap here */}
         <ul className="flex flex-col gap-16">
@@ -29,7 +29,7 @@ export default function Index({ posts, globalData }) {
             <li
               key={post.filePath}
               // Styling for the blog tile container with hover effects and responsive design
-              className="transition border bg-white/10 border-gray-800/10 md:first:rounded-t-lg md:last:rounded-b-lg backdrop-blur-lg dark:bg-black/30 hover:bg-white/20 dark:hover:bg-black/50 dark:border-white/10"
+              className="transition border bg-gray-50/80 border-gray-800/10 md:first:rounded-t-lg md:last:rounded-b-lg backdrop-blur-lg dark:bg-black/30 hover:bg-gray-100/80 dark:hover:bg-black/50 dark:border-white/10"
               data-sb-object-id={`posts/${post.filePath}`}
             >
               {/* Link wrapper for the entire blog tile */}
@@ -82,6 +82,7 @@ export default function Index({ posts, globalData }) {
         </ul>
       </main>
       <Footer copyrightText={globalData.footerText} />
+      {/* Original gradient components commented out
       <GradientBackground
         variant="large"
         className="fixed top-20 opacity-40 dark:opacity-60"
@@ -90,6 +91,7 @@ export default function Index({ posts, globalData }) {
         variant="small"
         className="absolute bottom-0 opacity-20 dark:opacity-10"
       />
+      */}
     </Layout>
   );
 }
