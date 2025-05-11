@@ -6,8 +6,11 @@ exports.COLOR_THEMES = {
       'gradient-2': '#000000',
       'gradient-3': '#00E26C',
       'gradient-4': '#000000',
-    
-      
+      //      primary: '#7D7AFF',
+      //      'gradient-1': '#7d7aff',
+      //      'gradient-2': '#2121e2',
+      //      'gradient-3': '#00fff0',
+      //      'gradient-4': '#8785FF',
     
     },
   },

@@ -19,11 +19,11 @@ export const getPostFilePaths = () => {
   );
 };
 
-export const sortPostsByDate = (posts) => {
+export const sortPostsBySequence = (posts) => {
   return posts.sort((a, b) => {
-    const aDate = new Date(a.data.date);
-    const bDate = new Date(b.data.date);
-    return bDate - aDate;
+    const aSeq = a.data.sequence || 0;
+    const bSeq = b.data.sequence || 0;
+    return aSeq - bSeq;  // Ascending order (lower sequence numbers first)
   });
 };
 
@@ -39,7 +39,7 @@ export const getPosts = () => {
     };
   });
 
-  posts = sortPostsByDate(posts);
+  posts = sortPostsBySequence(posts);  // Changed from sortPostsByDate to sortPostsBySequence
 
   return posts;
 };
