@@ -99,6 +99,7 @@ export default function PostPage({
         </div>
       </article>
       <Footer copyrightText={globalData.footerText} />
+      {/* Gradient backgrounds commented out
       <GradientBackground
         variant="large"
         className="absolute -top-32 opacity-30 dark:opacity-50"
@@ -107,6 +108,7 @@ export default function PostPage({
         variant="small"
         className="absolute bottom-0 opacity-20 dark:opacity-10"
       />
+      */}
     </Layout>
   );
 }
