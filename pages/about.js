@@ -38,6 +38,9 @@ export default function AboutPage({ globalData }) {
               By combining architectural expertise with software engineering capabilities, we create innovative solutions that enhance both the physical and digital aspects of architectural projects. Our team brings together the best of both worlds to deliver exceptional results for our clients.
             </p>
           </div>
+          <p className="text-xl mb-6 font-bold">
+            <a href="mailto:letstalk@systemais.co.uk">letstalk@systemais.co.uk</a>
+          </p>
         </article>
       </main>
       <Footer copyrightText={globalData.footerText} />

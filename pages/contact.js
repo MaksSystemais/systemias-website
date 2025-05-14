@@ -1,3 +1,4 @@
+/*
 import { getGlobalData } from '../utils/global-data';
 import Head from 'next/head';
 import Footer from '../components/Footer';
@@ -20,9 +21,12 @@ export default function ContactPage({ globalData }) {
           </h1>
           <div className="prose dark:prose-invert mx-auto text-left">
             <p className="text-xl mb-6">
-              Have a project in mind? We&apos;d love to hear from you. Fill out the form below and we&apos;ll get back to you as soon as possible.
+              Have a project in mind? We&apos;d love to hear from you. Please contact us via email:
             </p>
-
+            <p className="text-xl mb-6 font-bold">
+              <a href="mailto:letstalk@systemais.co.uk">letstalk@systemais.co.uk</a>
+            </p>
+            {/*
             <form
               action="/success"
               name="contact"
@@ -98,6 +102,7 @@ export default function ContactPage({ globalData }) {
                 Send Message
               </button>
             </form>
+            }
           </div>
         </article>
       </main>
@@ -113,4 +118,5 @@ export function getStaticProps() {
       globalData,
     },
   };
-} 
+}
+*/ 

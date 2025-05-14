@@ -59,7 +59,7 @@ export default function ServicesPage({ globalData }) {
 
             <h2 className="text-2xl font-bold mt-8 mb-4">Need Something Different?</h2>
             <p>
-              Looking for something specific? <Link href="/contact" className="text-[#ffd700] hover:text-[#e6c200] transition-colors">Reach out to us</Link> and can discuss how we can create the perfect solution for your needs.
+              Looking for something specific? <Link href="/contact" className="text-[#ffd700] hover:text-[#e6c200] transition-colors">Reach out to us, happy to discuss how we can create the solution for your challenges. Email: letstalk@systemais.co.uk</Link>
             </p>
 
 
