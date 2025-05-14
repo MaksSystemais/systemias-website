@@ -24,6 +24,7 @@ export default function ContactPage({ globalData }) {
             </p>
 
             <form
+              action="/success"
               name="contact"
               method="POST"
               data-netlify="true"
@@ -32,7 +33,10 @@ export default function ContactPage({ globalData }) {
             >
               <input type="hidden" name="form-name" value="contact" />
               <div className="hidden">
-                <input name="bot-field" />
+                <label>
+                  Don&apos;t fill this out if you&apos;re human: 
+                  <input name="bot-field" />
+                </label>
               </div>
 
               <div className="space-y-2">
