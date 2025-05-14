@@ -59,7 +59,7 @@ export default function ServicesPage({ globalData }) {
 
             <h2 className="text-2xl font-bold mt-8 mb-4">Need Something Different?</h2>
             <p>
-              If you don't see exactly what you're looking for, please <Link href="/contact" className="text-[#ffd700] hover:text-[#e6c200] transition-colors">get in touch</Link>. Contact us to discuss how we can help with your unique challenges.
+              If you don&apos;t see exactly what you&apos;re looking for, please <Link href="/contact" className="text-[#ffd700] hover:text-[#e6c200] transition-colors">get in touch</Link>. Contact us to discuss how we can help with your unique challenges.
             </p>
 
 

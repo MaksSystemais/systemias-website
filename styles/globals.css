@@ -1,5 +1,6 @@
-@import 'tailwindcss';
-@plugin '@tailwindcss/typography';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @theme static {
   --color-primary: var(--theme-primary);
@@ -14,6 +15,16 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
+  :root {
+    --color-primary: var(--theme-primary);
+    --color-gradient-1: var(--theme-gradient-1);
+    --color-gradient-2: var(--theme-gradient-2);
+    --color-gradient-3: var(--theme-gradient-3);
+    --color-gradient-4: var(--theme-gradient-4);
+    --font-primary: var(--theme-headings);
+    --font-secondary: var(--theme-body);
+  }
+
   h1,
   h2,
   h3,

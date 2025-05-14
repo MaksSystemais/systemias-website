@@ -20,7 +20,7 @@ export default function ContactPage({ globalData }) {
           </h1>
           <div className="prose dark:prose-invert mx-auto text-left">
             <p className="text-xl mb-6">
-              Have a project in mind? We'd love to hear from you. Fill out the form below and we'll get back to you as soon as possible.
+              Have a project in mind? We&apos;d love to hear from you. Fill out the form below and we&apos;ll get back to you as soon as possible.
             </p>
 
             <form
