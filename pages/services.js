@@ -33,7 +33,7 @@ export default function ServicesPage({ globalData }) {
             <div className="space-y-4">
               <h3 className="text-xl font-semibold">SharePoint & Power Apps</h3>
               <p>
-                We offer low-code, cost-effective solutions using Microsoft's powerful platforms:
+                We offer low-code, cost-effective solutions using Microsoft powerful platforms:
               </p>
               <ul>
                 <li>Custom SharePoint site development</li>
@@ -59,7 +59,7 @@ export default function ServicesPage({ globalData }) {
 
             <h2 className="text-2xl font-bold mt-8 mb-4">Need Something Different?</h2>
             <p>
-              If you don&apos;t see exactly what you&apos;re looking for, please <Link href="/contact" className="text-[#ffd700] hover:text-[#e6c200] transition-colors">get in touch</Link>. Contact us to discuss how we can help with your unique challenges.
+              Looking for something specific? <Link href="/contact" className="text-[#ffd700] hover:text-[#e6c200] transition-colors">Reach out to us</Link> and can discuss how we can create the perfect solution for your needs.
             </p>
 
 
