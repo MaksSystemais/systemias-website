@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 const sunIcon = (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -48,8 +50,18 @@ const moonIcon = (
 );
 
 const ThemeSwitcher = () => {
+  useEffect(() => {
+    // Check for saved theme preference or use system preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, []);
+
   return (
-    <div className="flex justify-center p-1 mt-6 bg-white dark:bg-gray-900 rounded-3xl">
+    <div className="flex justify-center p-1 mt-6 bg-gray-900 dark:bg-gray-900 rounded-3xl">
       <button
         type="button"
         aria-label="Use Dark Mode"
@@ -57,7 +69,7 @@ const ThemeSwitcher = () => {
           document.documentElement.classList.add('dark');
           localStorage.setItem('theme', 'dark');
         }}
-        className="flex items-center justify-center w-24 h-10 p-2 pr-2 transition cursor-pointer dark:bg-primary rounded-3xl align-center"
+        className="flex items-center justify-center w-24 h-10 p-2 pr-2 transition-colors duration-200 ease-in-out cursor-pointer bg-transparent dark:bg-primary rounded-3xl align-center"
       >
         {moonIcon}
       </button>
@@ -69,7 +81,7 @@ const ThemeSwitcher = () => {
           document.documentElement.classList.remove('dark');
           localStorage.setItem('theme', 'light');
         }}
-        className="flex items-center justify-center w-24 h-10 p-2 pr-2 transition cursor-pointer bg-primary dark:bg-transparent rounded-3xl align-center"
+        className="flex items-center justify-center w-24 h-10 p-2 pr-2 transition-colors duration-200 ease-in-out cursor-pointer bg-primary dark:bg-transparent rounded-3xl align-center"
       >
         {sunIcon}
       </button>

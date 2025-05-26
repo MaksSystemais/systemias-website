@@ -17,35 +17,35 @@ import Header from '../../components/Header';
 import Layout, { GradientBackground } from '../../components/Layout';
 import SEO from '../../components/SEO';
 
-// Custom components/renderers to pass to MDX.
-// Since the MDX files aren't loaded by webpack, they have no knowledge of how
-// to handle import statements. Instead, you must include components in scope
-// here.
+// Define custom components for MDX rendering
+// These components will be used to render MDX content with custom styling and behavior
 const components = {
-  a: CustomLink,
-  // It also works with dynamically-imported components, which is especially
-  // useful for conditionally loading components for certain routes.
-  // See the notes in README.md for more details.
-  Head,
-  img: CustomImage,
+  a: CustomLink,        // Custom link component for handling internal/external links
+  Head,                 // Next.js Head component for managing document head
+  img: CustomImage,     // Custom image component for optimized image loading
 };
 
+// Main post page component
 export default function PostPage({
-  source,
-  frontMatter,
-  prevPost,
-  nextPost,
-  globalData,
-  slug,
+  source,              // MDX source content
+  frontMatter,         // Post metadata (title, description, etc.)
+  prevPost,            // Previous post data for navigation
+  nextPost,            // Next post data for navigation
+  globalData,          // Global site data
+  slug,                // Current post slug
 }) {
   return (
     <Layout>
+      {/* SEO component for managing meta tags */}
       <SEO
         title={`${frontMatter.title} - ${globalData.name}`}
         description={frontMatter.description}
       />
       <Header name={globalData.name} />
+      
+      {/* Main article container */}
       <article className="px-6 md:px-0" data-sb-object-id={`posts/${slug}.mdx`}>
+        {/* Article header with title and description */}
         <header>
           <h1
             className="mb-12 text-3xl text-center md:text-5xl dark:text-white"
@@ -59,15 +59,20 @@ export default function PostPage({
             </p>
           )}
         </header>
-        <main>
+
+        {/* Main content area with MDX rendering */}
+        <main className="w-full">
           <article
-            className="prose dark:prose-invert"
+            className="prose dark:prose-invert max-w-none w-full"
             data-sb-field-path="markdown_content"
           >
             <MDXRemote {...source} components={components} />
           </article>
         </main>
+
+        {/* Navigation between posts */}
         <div className="grid mt-12 md:grid-cols-2 lg:-mx-24">
+          {/* Previous post link */}
           {prevPost && (
             <Link
               href={`/posts/${prevPost.slug}`}
@@ -82,6 +87,8 @@ export default function PostPage({
               <ArrowIcon className="mx-auto mt-auto transform rotate-180 md:mr-0" />
             </Link>
           )}
+          
+          {/* Next post link */}
           {nextPost && (
             <Link
               href={`/posts/${nextPost.slug}`}
@@ -113,6 +120,8 @@ export default function PostPage({
   );
 }
 
+// Get static props for the page
+// This function runs at build time to generate the page
 export const getStaticProps = async ({ params }) => {
   const globalData = getGlobalData();
   const { mdxSource, data } = await getPostBySlug(params.slug);
@@ -131,6 +140,8 @@ export const getStaticProps = async ({ params }) => {
   };
 };
 
+// Get static paths for all posts
+// This function tells Next.js which pages to pre-render at build time
 export const getStaticPaths = async () => {
   const paths = getPostFilePaths()
     // Remove file extensions for page paths
@@ -140,6 +151,6 @@ export const getStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false,
+    fallback: false, // Return 404 for paths not returned by getStaticPaths
   };
 };
