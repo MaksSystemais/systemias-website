@@ -63,7 +63,7 @@ export default function PostPage({
         {/* Main content area with MDX rendering */}
         <main className="w-full">
           <article
-            className="prose dark:prose-invert max-w-none w-full"
+            className="prose dark:prose-invert max-w-none w-full prose-p:text-lg prose-p:mb-4 prose-p:leading-relaxed prose-li: text-lg"
             data-sb-field-path="markdown_content"
           >
             <MDXRemote {...source} components={components} />
