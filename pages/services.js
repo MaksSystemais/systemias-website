@@ -1,67 +1,53 @@
 import { getGlobalData } from '../utils/global-data';
-import Head from 'next/head';
+import { serialize } from 'next-mdx-remote/serialize';
+import { MDXRemote } from 'next-mdx-remote';
+import matter from 'gray-matter';
+import fs from 'fs';
+import path from 'path';
+import remarkGfm from 'remark-gfm';
+import rehypePrism from '@mapbox/rehype-prism';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
-import Link from 'next/link';
+import CustomImage from '../components/CustomImage';
+import CustomLink from '../components/CustomLink';
+import React from 'react';
 
-export default function ServicesPage({ globalData }) {
+const components = {
+  a: CustomLink,
+  img: CustomImage,
+  p: ({ children, ...props }) => {
+    // Check if the paragraph contains only an image
+    const hasOnlyImage = React.Children.toArray(children).every(
+      child => React.isValidElement(child) && child.type === CustomImage
+    );
+    
+    // If it's just an image, render it without the paragraph wrapper
+    if (hasOnlyImage) {
+      return <>{children}</>;
+    }
+    
+    // Otherwise, render as a normal paragraph
+    return <p {...props}>{children}</p>;
+  }
+};
+
+export default function ServicesPage({ mdxSource, frontMatter, globalData }) {
   return (
     <Layout>
       <SEO
-        title={`Services - ${globalData.name}`}
-        description="Explore our range of architectural and digital solutions"
+        title={`${frontMatter.title} - ${globalData.name}`}
+        description={frontMatter.description}
       />
       <Header name={globalData.name} />
       <main className="w-full px-6 md:px-0">
-        <article className="max-w-3xl mx-auto">
+        <article className="prose dark:prose-invert max-w-none w-full prose-p:text-lg prose-p:mb-4 prose-p:leading-relaxed">
           <h1 className="mb-12 text-3xl text-center md:text-5xl dark:text-white">
-            Our Services
+            {frontMatter.title}
           </h1>
-          <div className="prose dark:prose-invert">
-            <p className="text-xl mb-6">
-              We combine architectural expertise with digital innovation to provide comprehensive solutions for your projects.
-            </p>
-
-            <h2 className="text-2xl font-bold mt-8 mb-4">Bespoke Web Applications</h2>
-            <p>
-              We develop custom web applications and digital solutions to streamline your complex workflows and optimize your processes. Our solutions are tailored to your specific needs, ensuring maximum efficiency and effectiveness.
-            </p>
-
-            <h2 className="text-2xl font-bold mt-8 mb-4">Microsoft Solutions</h2>
-            <div className="space-y-4">
-              <h3 className="text-xl font-semibold">SharePoint & Power Apps</h3>
-              <p>
-                We offer low-code, cost-effective solutions using Microsoft powerful platforms:
-              </p>
-              <ul>
-                <li>Custom SharePoint site development</li>
-                <li>Power Apps integration and customization</li>
-                <li>Workflow automation</li>
-                <li>Document management systems</li>
-              </ul>
-            </div>
-
-            <h2 className="text-2xl font-bold mt-8 mb-4">Project Collaboration Solutions with SharePoint</h2>
-            <div className="space-y-4">
-              <h3 className="text-xl font-semibold">Project CDEs (Common Data Environments)</h3>
-              <p>
-                We provide comprehensive project collaboration solutions:
-              </p>
-              <ul>
-                <li>Project-specific SharePoint site setup</li>
-                <li>Design information exchange platforms</li>
-                <li>Collaboration workspace configuration</li>
-                <li>Ongoing hosting and management</li>
-              </ul>
-            </div>
-
-            <h2 className="text-2xl font-bold mt-8 mb-4">Need Something Different?</h2>
-            <p>
-              Looking for something specific? Reach out to us, happy to discuss how we can create the solution for your challenges. <strong>Email: letstalk@systemais.co.uk</strong>
-            </p>
-
+          <div className="prose dark:prose-invert max-w-none">
+            <MDXRemote {...mdxSource} components={components} />
           </div>
         </article>
       </main>
@@ -70,11 +56,23 @@ export default function ServicesPage({ globalData }) {
   );
 }
 
-export function getStaticProps() {
+export async function getStaticProps() {
   const globalData = getGlobalData();
+  const source = fs.readFileSync(path.join(process.cwd(), 'pages/services.mdx'));
+  const { content, data } = matter(source);
+  const mdxSource = await serialize(content, {
+    mdxOptions: {
+      remarkPlugins: [remarkGfm],
+      rehypePlugins: [rehypePrism],
+    },
+    scope: data,
+  });
+
   return {
     props: {
       globalData,
+      mdxSource,
+      frontMatter: data,
     },
   };
 } 

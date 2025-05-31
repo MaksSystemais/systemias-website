@@ -7,7 +7,7 @@ export const getGlobalData = () => {
     : 'Projects & Blog';
   const footerText = process.env.BLOG_FOOTER_TEXT
     ? decodeURI(process.env.BLOG_FOOTER_TEXT)
-    : 'All rights reserved.';
+    : 'Systemais | All rights reserved';
 
   return {
     name,
