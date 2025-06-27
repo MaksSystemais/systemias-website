@@ -49,6 +49,32 @@ const moonIcon = (
   </svg>
 );
 
+const instagramIcon = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    fill="none"
+    viewBox="0 0 24 24"
+    className="dark:opacity-50"
+  >
+    <path
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      d="M17 2H7a5 5 0 00-5 5v10a5 5 0 005 5h10a5 5 0 005-5V7a5 5 0 00-5-5z"
+    ></path>
+    <path
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      d="M16 11.37a4 4 0 11-7.914 1.173A4 4 0 0116 11.37zM17.5 6.5h.01"
+    ></path>
+  </svg>
+);
+
 const ThemeSwitcher = () => {
   useEffect(() => {
     // Check for saved theme preference or use system preference
@@ -92,6 +118,17 @@ const ThemeSwitcher = () => {
 export default function Footer({ copyrightText }) {
   return (
     <footer className="flex flex-col items-center py-16">
+      <div className="flex items-center mb-4">
+        <a
+          href="https://www.instagram.com/_systemais_"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white transition-colors"
+          aria-label="Follow us on Instagram"
+        >
+          {instagramIcon}
+        </a>
+      </div>
       <p className="mb-3 font-bold uppercase dark:text-white opacity-60">
         {copyrightText}
       </p>
