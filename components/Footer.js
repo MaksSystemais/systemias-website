@@ -75,6 +75,25 @@ const instagramIcon = (
   </svg>
 );
 
+const linkedInIcon = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    fill="none"
+    viewBox="0 0 24 24"
+    className="dark:opacity-50"
+  >
+    <path
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM6 9H2v12h4V9zM4 6a2 2 0 100-4 2 2 0 000 4z"
+    />
+  </svg>
+);
+
 const ThemeSwitcher = () => {
   useEffect(() => {
     // Check for saved theme preference or use system preference
@@ -118,7 +137,7 @@ const ThemeSwitcher = () => {
 export default function Footer({ copyrightText }) {
   return (
     <footer className="flex flex-col items-center py-16">
-      <div className="flex items-center mb-4">
+      <div className="flex items-center gap-4 mb-4">
         <a
           href="https://www.instagram.com/_systemais_"
           target="_blank"
@@ -127,6 +146,15 @@ export default function Footer({ copyrightText }) {
           aria-label="Follow us on Instagram"
         >
           {instagramIcon}
+        </a>
+        <a
+          href="https://www.linkedin.com/company/107707966/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white transition-colors"
+          aria-label="Follow us on LinkedIn"
+        >
+          {linkedInIcon}
         </a>
       </div>
       <p className="mb-3 font-bold uppercase dark:text-white opacity-60">
