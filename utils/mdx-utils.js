@@ -6,30 +6,30 @@ import rehypePrism from '@mapbox/rehype-prism';
 import remarkGfm from 'remark-gfm';
 import rehypeUnwrapImages from 'rehype-unwrap-images';
 
-// POSTS_PATH is useful when you want to get the path to a specific file
-export const POSTS_PATH = path.join(process.cwd(), 'posts');
+// PROJECTS_PATH is useful when you want to get the path to a specific file
+export const PROJECTS_PATH = path.join(process.cwd(), 'projects');
 
-// getPostFilePaths is the list of all mdx files inside the POSTS_PATH directory
-export const getPostFilePaths = () => {
+// getProjectFilePaths is the list of all mdx files inside the PROJECTS_PATH directory
+export const getProjectFilePaths = () => {
   return (
     fs
-      .readdirSync(POSTS_PATH)
+      .readdirSync(PROJECTS_PATH)
       // Only include md(x) files
       .filter((path) => /\.mdx?$/.test(path))
   );
 };
 
-export const sortPostsBySequence = (posts) => {
-  return posts.sort((a, b) => {
+export const sortProjectsBySequence = (projects) => {
+  return projects.sort((a, b) => {
     const aSeq = a.data.sequence || 0;
     const bSeq = b.data.sequence || 0;
     return aSeq - bSeq;  // Ascending order (lower sequence numbers first)
   });
 };
 
-export const getPosts = () => {
-  let posts = getPostFilePaths().map((filePath) => {
-    const source = fs.readFileSync(path.join(POSTS_PATH, filePath));
+export const getProjects = () => {
+  let projects = getProjectFilePaths().map((filePath) => {
+    const source = fs.readFileSync(path.join(PROJECTS_PATH, filePath));
     const { content, data } = matter(source);
 
     return {
@@ -39,14 +39,14 @@ export const getPosts = () => {
     };
   });
 
-  posts = sortPostsBySequence(posts);  // Changed from sortPostsByDate to sortPostsBySequence
+  projects = sortProjectsBySequence(projects);  // Changed from sortPostsByDate to sortProjectsBySequence
 
-  return posts;
+  return projects;
 };
 
-export const getPostBySlug = async (slug) => {
-  const postFilePath = path.join(POSTS_PATH, `${slug}.mdx`);
-  const source = fs.readFileSync(postFilePath);
+export const getProjectBySlug = async (slug) => {
+  const projectFilePath = path.join(PROJECTS_PATH, `${slug}.mdx`);
+  const source = fs.readFileSync(projectFilePath);
 
   const { content, data } = matter(source);
 
@@ -59,41 +59,41 @@ export const getPostBySlug = async (slug) => {
     scope: data,
   });
 
-  return { mdxSource, data, postFilePath };
+  return { mdxSource, data, projectFilePath };
 };
 
-export const getNextPostBySlug = (slug) => {
-  const posts = getPosts();
+export const getNextProjectBySlug = (slug) => {
+  const projects = getProjects();
   const currentFileName = `${slug}.mdx`;
-  const currentPost = posts.find((post) => post.filePath === currentFileName);
-  const currentPostIndex = posts.indexOf(currentPost);
+  const currentProject = projects.find((project) => project.filePath === currentFileName);
+  const currentProjectIndex = projects.indexOf(currentProject);
 
-  const post = posts[currentPostIndex - 1];
-  // no prev post found
-  if (!post) return null;
+  const project = projects[currentProjectIndex - 1];
+  // no prev project found
+  if (!project) return null;
 
-  const nextPostSlug = post?.filePath.replace(/\.mdx?$/, '');
+  const nextProjectSlug = project?.filePath.replace(/\.mdx?$/, '');
 
   return {
-    title: post.data.title,
-    slug: nextPostSlug,
+    title: project.data.title,
+    slug: nextProjectSlug,
   };
 };
 
-export const getPreviousPostBySlug = (slug) => {
-  const posts = getPosts();
+export const getPreviousProjectBySlug = (slug) => {
+  const projects = getProjects();
   const currentFileName = `${slug}.mdx`;
-  const currentPost = posts.find((post) => post.filePath === currentFileName);
-  const currentPostIndex = posts.indexOf(currentPost);
+  const currentProject = projects.find((project) => project.filePath === currentFileName);
+  const currentProjectIndex = projects.indexOf(currentProject);
 
-  const post = posts[currentPostIndex + 1];
-  // no prev post found
-  if (!post) return null;
+  const project = projects[currentProjectIndex + 1];
+  // no prev project found
+  if (!project) return null;
 
-  const previousPostSlug = post?.filePath.replace(/\.mdx?$/, '');
+  const previousProjectSlug = project?.filePath.replace(/\.mdx?$/, '');
 
   return {
-    title: post.data.title,
-    slug: previousPostSlug,
+    title: project.data.title,
+    slug: previousProjectSlug,
   };
 };

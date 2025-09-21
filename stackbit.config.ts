@@ -9,16 +9,16 @@ export default defineStackbitConfig({
     contentSources: [
         new GitContentSource({
             rootPath: __dirname,
-            contentDirs: ['posts'],
+            contentDirs: ['projects'],
             models: [
                 {
-                    name: "Post",
+                    name: "Project",
                     type: "page",
-                    urlPath: "/posts/{slug}",
-                    filePath: "posts/{slug}.mdx",
+                    urlPath: "/projects/{slug}",
+                    filePath: "projects/{slug}.mdx",
                     fields: [
-                        { name: "title", type: "string", required: true, default: 'Post Title' }, 
-                        { name: "description", type: "string", default: 'Post description goes here' },
+                        { name: "title", type: "string", required: true, default: 'Project Title' }, 
+                        { name: "description", type: "string", default: 'Project description goes here' },
                         { name: "date", type: "date", required: true },
                         { name: "image", type: "image", default: '/images/Picture_Placeholder.jpg' },
                         { name: "sequence", type: "number", required: true, default: 0 }

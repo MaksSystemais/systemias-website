@@ -24,7 +24,7 @@ A customizable blog starter using:
   - [Setting Up Locally](#setting-up-locally)
   - [Using the Wizard](#using-the-setup-wizard)
 - [Configuring the Blog](#configuring-the-blog)
-- [Adding New Posts](#adding-new-posts)
+- [Adding New Projects](#adding-new-projects)
 - [Netlify Visual Editor](#netlify-visual-editor)
 - [Testing](#testing)
   - [Included Default Testing](#included-default-testing)
@@ -83,13 +83,13 @@ https://user-images.githubusercontent.com/3611928/153997545-6dcdeef0-e570-49e7-9
 If setting an environment variable isn't your cup of tea, the defaults can be changed in [`utils/global-data.js`](/utils/global-data.js). You can also remove the variables and hard code blog information where these variables are used in the code base.
 
 - `BLOG_THEME, BLOG_FONT_HEADINGS, & BLOG_FONT_PARAGRAPHS` are used in [`tailwind-preset.js`](tailwind-preset.js)
-- `BLOG_NAME, BLOG_TITLE, BLOG_FOOTER_TEXT` are used in [`pages/index.js`](pages/index.js) & [`pages/posts/[slug].js`](pages/posts/[slug].js) through the `globalData` object.
+- `BLOG_NAME, BLOG_TITLE, BLOG_FOOTER_TEXT` are used in [`pages/index.js`](pages/index.js) & [`pages/projects/[slug].js`](pages/projects/[slug].js) through the `globalData` object.
 
-## Adding new posts
+## Adding new projects
 
-All posts are stored in `/posts` directory. To make a new post, create a new file with the [`.mdx` extension](https://mdxjs.com/).
+All projects are stored in `/projects` directory. To make a new project, create a new file with the [`.mdx` extension](https://mdxjs.com/).
 
-Since the posts are written in `MDX` format you can pass props and components. That means you can use [React components](https://reactjs.org/docs/components-and-props.html) inside your posts to make them more interactive. Learn more about how to do so in the [MDX docs on content](https://mdxjs.com/docs/using-mdx/#components).
+Since the projects are written in `MDX` format you can pass props and components. That means you can use [React components](https://reactjs.org/docs/components-and-props.html) inside your projects to make them more interactive. Learn more about how to do so in the [MDX docs on content](https://mdxjs.com/docs/using-mdx/#components).
 
 https://user-images.githubusercontent.com/3611928/152727802-102ec296-41c8-446d-93ed-922d11187073.mp4
 

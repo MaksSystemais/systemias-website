@@ -27,8 +27,8 @@ export default function AboutPage({ mdxSource, frontMatter, globalData }) {
       />
       <Header name={globalData.name} />
       <main className="w-full px-6 md:px-0">
-        <article className="prose dark:prose-invert max-w-none w-full prose-p:text-lg prose-p:mb-4 prose-p:leading-relaxed">
-          <h1 className="mb-12 text-3xl text-center md:text-5xl dark:text-white">
+        <article className="prose dark:prose-invert max-w-2xl mx-auto w-full prose-p:text-lg prose-p:mb-4 prose-p:leading-relaxed">
+          <h1 className="mb-12 pt-12 text-3xl text-center md:text-5xl dark:text-white">
             {frontMatter.title}
           </h1>
           <div className="prose dark:prose-invert max-w-none">

@@ -1,47 +1,50 @@
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { useRouter } from 'next/router';
 
 export default function Header({ name }) {
-  const pathname = usePathname();
+  const router = useRouter();
+  const pathname = router.pathname;
   
   const navItems = [
-    { label: 'Projects', href: '/' },
-    { label: 'Services', href: '/services' },
+    { label: 'Home', href: '/' },
+    /*{ label: 'Services', href: '/services' },*/
     { label: 'About', href: '/about' }
     /*{ label: 'Contact', href: '/contact' }*/
   ];
 
   return (
-    <header className="pt-20 pb-12">
-      {/* Original gradient logo commented out
-      <div className="block w-12 h-12 mx-auto mb-4 rounded-full bg-conic-180 from-gradient-3 from-0% to-gradient-4 to-100%" />
-      */}
-      <p className="text-4xl font-bold text-center mb-8">
-        <Link href="/" className="bg-gradient-to-r from-green-500 to-yellow-400 bg-clip-text text-transparent hover:from-green-600 hover:to-yellow-500 transition-all duration-300">
-          {name}
-        </Link>
-      </p>
-      <nav className="max-w-2xl mx-auto">
-        <ul className="flex justify-center space-x-8">
-          {navItems.map((item) => {
-            const isActive = pathname === item.href;
-            return (
-              <li key={item.href}>
-                <Link 
-                  href={item.href}
-                  className={`transition-colors ${
-                    isActive 
-                      ? 'text-gray-900 dark:text-white font-medium' 
-                      : 'text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white'
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
+    <header className="w-full pt-4 pb-4">
+      <div className="flex items-center justify-between w-full px-0">
+        {/* Company name on the left */}
+        <div className="flex-shrink-0 text-left">
+          <Link href="/" className="font-bold text-2xl text-green-500 hover:text-green-600 transition-all duration-300 tracking-tight">
+            {name}
+          </Link>
+        </div>
+        
+        {/* Navigation items on the right */}
+        <nav className="flex-shrink-0">
+          <ul className="flex space-x-8 text-sm">
+            {navItems.map((item) => {
+              const isActive = pathname === item.href;
+              return (
+                <li key={item.href}>
+                  <Link 
+                    href={item.href}
+                    className={`transition-colors ${
+                      isActive 
+                        ? 'text-gray-900 dark:text-white font-medium' 
+                        : 'text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white'
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      </div>
     </header>
   );
 }

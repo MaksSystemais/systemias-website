@@ -1,84 +1,94 @@
 import Link from 'next/link';
-import { getPosts } from '../utils/mdx-utils';
+import { getProjects } from '../utils/mdx-utils';
 import Image from 'next/image';
 
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Layout, { GradientBackground } from '../components/Layout';
 import ArrowIcon from '../components/ArrowIcon';
+import TechnologyIcons from '../components/TechnologyIcons';
 import { getGlobalData } from '../utils/global-data';
 import SEO from '../components/SEO';
 
-export default function Index({ posts, globalData }) {
+export default function Index({ projects, globalData }) {
   return (
     <Layout>
       <SEO title={globalData.name} description={globalData.blogTitle} />
       <Header name={globalData.name} />
-      <main className="w-full">
-        <h1 className="mb-4 text-3xl text-center lg:text-5xl">
-          {globalData.blogTitle}
+      <main className="w-full px-6 md:px-0">
+        <h1 className="mb-4 text-2xl text-center lg:text-5xl font-bold tracking-tight max-w-2xl mx-auto pt-12">
+          {/*{globalData.blogTitle}*/} Work smarter, perform better. <span className="px-1 py-1 font-bold" style={{backgroundColor: 'rgba(0, 227, 107, 0.6)'}}>Efficiency</span> in action!
         </h1>
         {/* Company motto */}
-        <p className="mb-12 text-xl text-center italic text-gray-600 dark:text-gray-300">
-          &ldquo;We solve problems you did not know you have&rdquo;
+        <p className="mb-12 text-base text-center text-gray-600 dark:text-gray-300 max-w-2xl mx-auto pb-12">
+        We aim to develop effective digital tools for architects and AEC industry professionals tackling the current real industry challenges.
         </p>
-        {/* Blog posts list container - Add gap here */}
-        <ul className="flex flex-col gap-16">
-          {/* Map through all blog posts and create a tile for each */}
-          {posts.map((post) => (
+        {/* Projects grid container - 2 column gallery */}
+        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Map through all projects and create a tile for each */}
+          {projects.map((project) => (
             <li
-              key={post.filePath}
-              // Styling for the blog tile container with hover effects and responsive design
-              className="transition border bg-gray-50/80 border-gray-800/10 md:first:rounded-t-lg md:last:rounded-b-lg backdrop-blur-lg dark:bg-black/30 hover:bg-gray-100/80 dark:hover:bg-black/50 dark:border-white/10"
-              data-sb-object-id={`posts/${post.filePath}`}
+              key={project.filePath}
+              // Styling for the project tile container with hover effects and responsive design
+              className="transition-all duration-300 border border-white/50 dark:border-white/20 hover:bg-gradient-to-br hover:from-green-400/20 hover:to-yellow-400/20 hover:shadow-lg hover:shadow-green-500/10 focus-within:border-2 focus-within:border-[rgb(0,226,108)] rounded-lg"
+              data-sb-object-id={`projects/${project.filePath}`}
             >
               {/* Link wrapper for the entire blog tile */}
               <Link
                 // Convert .mdx file path to URL-friendly slug
-                as={`/posts/${post.filePath.replace(/\.mdx?$/, '')}`}
-                href={`/posts/[slug]`}
-                className="block focus:outline-hidden focus:ring-4 focus:ring-primary/50"
+                as={`/projects/${project.filePath.replace(/\.mdx?$/, '')}`}
+                href={`/projects/[slug]`}
+                className="block focus:outline-none"
               >
-                {/* Post image */}
+                {/* Project image */}
                 <div className="relative w-full aspect-video">
                   <Image
-                    src={post.data.image || '/images/Picture_Placeholder.jpg'}
-                    alt={post.data.title}
+                    src={project.data.image || '/images/Picture_Placeholder.jpg'}
+                    alt={project.data.title}
                     fill
                     className="object-cover"
                     priority={true}
                   />
                 </div>
                 {/* Content container */}
-                <div className="px-6 py-6 lg:py-10 lg:px-16">
-                  {/* Display post date if available */}
-                  {post.data.date && (
+                <div className="px-4 py-4 lg:px-6 lg:py-6">
+                  {/* Display project date if available */}
+                  {/*{project.data.date && (
                     <p
-                      className="mb-3 font-bold uppercase opacity-60"
+                      className="mb-2 text-sm font-bold uppercase opacity-60"
                       data-sb-field-path="date"
                     >
-                      {post.data.date}
+                      {project.data.date}
                     </p>
-                  )}
-                  {/* Post title */}
-                  <h2 className="text-2xl md:text-3xl" data-sb-field-path="title">
-                    {post.data.title}
+                  )}*/}
+                  {/* Project title */}
+                  <h2 className="text-lg md:text-xl lg:text-xl" data-sb-field-path="title">
+                    {project.data.title}
                   </h2>
-                  {/* Display post description if available */}
-                  {post.data.description && (
+                  {/* Display project description if available */}
+                  {project.data.description && (
                     <p
-                      className="mt-3 text-lg opacity-60"
+                      className="mt-2 text-sm md:text-base opacity-60"
                       data-sb-field-path="description"
                     >
-                      {post.data.description}
+                      {project.data.description}
                     </p>
                   )}
-                  {/* Arrow icon indicating clickable tile */}
-                  <ArrowIcon className="mt-4" />
+                  {/* Technology icons */}
+                  <TechnologyIcons technologies={project.data.technologies} />
+                  
+                  {/* Read more text and arrow icon */}
+                  <div className="flex items-center gap-2 mt-3">
+                    <span className="text-sm text-gray-600 dark:text-gray-400">Read more</span>
+                    <ArrowIcon />
+                  </div>
+                  
+
                 </div>
               </Link>
             </li>
           ))}
+         
         </ul>
       </main>
       <Footer copyrightText={globalData.footerText} />
@@ -97,8 +107,8 @@ export default function Index({ posts, globalData }) {
 }
 
 export function getStaticProps() {
-  const posts = getPosts();
+  const projects = getProjects();
   const globalData = getGlobalData();
 
-  return { props: { posts, globalData } };
+  return { props: { projects, globalData } };
 }
