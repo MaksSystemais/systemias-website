@@ -8,18 +8,18 @@ const Button = ({
   className = '',
   ...props 
 }) => {
-  const baseClasses = 'inline-flex items-center justify-center font-bold rounded transition-all duration-300 ease-in-out no-underline';
+  const baseClasses = 'inline-flex items-center justify-center font-medium rounded transition-all duration-300 ease-in-out no-underline leading-tight';
   
   const variants = {
-    primary: 'bg-gray-800 hover:bg-gray-700 text-white',
-    secondary: 'bg-transparent hover:bg-gray-800 text-gray-800 hover:text-white border-2 border-gray-800',
+    primary: 'bg-[rgb(22,163,74)] hover:bg-[rgb(21,128,61)] text-white',
+    secondary: 'bg-transparent hover:bg-[rgb(22,163,74)] text-[rgb(22,163,74)] hover:text-white border-2 border-[rgb(22,163,74)]',
     gradient: 'bg-gradient-to-r from-green-500 to-yellow-500 hover:from-green-600 hover:to-yellow-600 text-white'
   };
 
   const sizes = {
-    small: 'py-0.5 px-3 text-sm',
-    medium: 'py-0.5 px-4 text-base',
-    large: 'py-0.5 px-6 text-lg'
+    small: 'px-2 text-xs',
+    medium: 'px-3 text-sm',
+    large: 'px-4 text-base'
   };
 
   const variantClasses = variants[variant] || variants.primary;
