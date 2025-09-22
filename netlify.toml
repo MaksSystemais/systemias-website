@@ -29,3 +29,9 @@
 # Explicitly disable submodules
 [build.processing.git]
   submodules = false
+
+# Redirects
+[[redirects]]
+  from = "/posts/1-share-and-log-project"
+  to = "/projects/share-and-log-project"
+  status = 301
