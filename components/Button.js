@@ -8,7 +8,7 @@ const Button = ({
   className = '',
   ...props 
 }) => {
-  const baseClasses = 'inline-flex items-center justify-center font-medium rounded transition-all duration-300 ease-in-out no-underline leading-tight';
+  const baseClasses = 'inline-flex items-center justify-center font-medium rounded-full transition-all duration-300 ease-in-out no-underline leading-none text-center';
   
   const variants = {
     primary: 'bg-[rgb(22,163,74)] hover:bg-[rgb(21,128,61)] text-white',
@@ -17,9 +17,9 @@ const Button = ({
   };
 
   const sizes = {
-    small: 'px-2 text-xs',
-    medium: 'px-3 text-sm',
-    large: 'px-4 text-base'
+    small: 'px-4 py-2 text-xs h-8',
+    medium: 'px-4 py-2 text-sm h-10',
+    large: 'px-4 py-2 text-base h-12',
   };
 
   const variantClasses = variants[variant] || variants.primary;
