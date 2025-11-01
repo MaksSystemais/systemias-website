@@ -17,7 +17,7 @@ export default function Index({ projects, globalData }) {
       <Header name={globalData.name} />
       <main className="w-full px-6 md:px-0">
         <h1 className="mb-4 text-2xl text-center lg:text-5xl font-bold tracking-tight max-w-2xl mx-auto pt-12">
-          {/*{globalData.blogTitle}*/} Work smarter, perform better. <span className="px-1 py-1 font-bold" style={{backgroundColor: 'rgba(0, 227, 107, 0.6)'}}>Efficiency</span> in action!
+          {/*{globalData.blogTitle}*/} Work smarter, perform better. <span className="px-1 py-1 font-bold" style={{backgroundColor: 'rgba(0, 227, 107, 0.3)'}}>Efficiency</span> in action!
         </h1>
         {/* Company motto */}
         <p className="mb-12 text-base text-center text-gray-600 dark:text-gray-300 max-w-2xl mx-auto pb-12">
