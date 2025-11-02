@@ -79,8 +79,8 @@ export default function Layout({ children }) {
 
   // Render layout with centered content and max width
   return (
-    <div className="relative pb-24 overflow-hidden">
-      <div className="flex flex-col items-center w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="relative pb-24 overflow-hidden min-h-screen flex flex-col">
+      <div className="flex flex-col items-center w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex-1">
         {children}
       </div>
     </div>

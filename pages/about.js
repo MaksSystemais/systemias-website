@@ -12,10 +12,12 @@ import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import CustomImage from '../components/CustomImage';
 import CustomLink from '../components/CustomLink';
+import FormComponent from '../components/FormComponent';
 
 const components = {
   a: CustomLink,
   img: CustomImage,
+  FormComponent,
 };
 
 export default function AboutPage({ mdxSource, frontMatter, globalData }) {

@@ -13,6 +13,7 @@ import ArrowIcon from '../../components/ArrowIcon';
 import Button from '../../components/Button';
 import CustomImage from '../../components/CustomImage';
 import CustomLink from '../../components/CustomLink';
+import FormComponent from '../../components/FormComponent';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import Layout, { GradientBackground } from '../../components/Layout';
@@ -23,6 +24,7 @@ import SEO from '../../components/SEO';
 const components = {
   a: CustomLink,        // Custom link component for handling internal/external links
   Button,               // Custom button component
+  FormComponent,        // Reusable form component for downloads and contact
   Head,                 // Next.js Head component for managing document head
   img: CustomImage,     // Custom image component for optimized image loading
 };

@@ -30,7 +30,7 @@ export default function Index({ projects, globalData }) {
             <li
               key={project.filePath}
               // Styling for the project tile container with hover effects and responsive design
-              className="transition-all duration-300 border border-white/50 dark:border-white/20 hover:bg-gradient-to-br hover:from-green-400/20 hover:to-yellow-400/20 hover:shadow-lg hover:shadow-green-500/10 focus-within:border-2 focus-within:border-[rgb(0,226,108)] rounded-lg"
+              className="transition-all duration-300 border border-gray-200 dark:border-gray-700 hover:-translate-y-1 hover:shadow-lg hover:shadow-gray-300/50 dark:hover:shadow-gray-900/50 focus-within:border-2 focus-within:border-[rgb(0,226,108)] rounded-lg flex flex-col"
               data-sb-object-id={`projects/${project.filePath}`}
             >
               {/* Link wrapper for the entire blog tile */}
@@ -38,10 +38,10 @@ export default function Index({ projects, globalData }) {
                 // Convert .mdx file path to URL-friendly slug
                 as={`/projects/${project.filePath.replace(/\.mdx?$/, '')}`}
                 href={`/projects/[slug]`}
-                className="block focus:outline-none"
+                className="flex flex-col h-full focus:outline-none overflow-hidden rounded-lg"
               >
                 {/* Project image */}
-                <div className="relative w-full aspect-video">
+                <div className="relative w-full aspect-video bg-gray-100 dark:bg-gray-800">
                   <Image
                     src={project.data.image || '/images/Picture_Placeholder.jpg'}
                     alt={project.data.title}
@@ -51,7 +51,7 @@ export default function Index({ projects, globalData }) {
                   />
                 </div>
                 {/* Content container */}
-                <div className="px-4 py-4 lg:px-6 lg:py-6">
+                <div className="px-4 py-4 lg:px-6 lg:py-6 flex flex-col flex-grow">
                   {/* Display project date if available */}
                   {/*{project.data.date && (
                     <p
@@ -66,23 +66,25 @@ export default function Index({ projects, globalData }) {
                     {project.data.title}
                   </h2>
                   {/* Display project description if available */}
-                  {project.data.description && (
+                  {/*project.data.description && (
                     <p
                       className="mt-2 text-sm md:text-base opacity-60"
                       data-sb-field-path="description"
                     >
                       {project.data.description}
                     </p>
-                  )}
+                  )*/}
                   {/* Technology icons */}
                   <TechnologyIcons technologies={project.data.technologies} />
+                  
+                  {/* Spacer to push "Read more" to bottom */}
+                  <div className="flex-grow"></div>
                   
                   {/* Read more text and arrow icon */}
                   <div className="flex items-center gap-2 mt-3">
                     <span className="text-sm text-gray-600 dark:text-gray-400">Read more</span>
                     <ArrowIcon />
                   </div>
-                  
 
                 </div>
               </Link>

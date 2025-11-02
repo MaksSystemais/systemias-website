@@ -40,3 +40,7 @@ yarn-error.log*
 
 # netlify
 .netlify
+
+.sketches/
+
+/components/FormComponent.README.md

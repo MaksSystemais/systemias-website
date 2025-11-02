@@ -19,6 +19,23 @@ class MyDocument extends Document {
         <body
           className={`antialiased text-lg bg-white dark:bg-black dark:text-white leading-base`}
         >
+          {/* Hidden forms for Netlify Forms detection */}
+          <form name="download-form" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+            <input type="hidden" name="form-name" value="download-form" />
+            <input type="text" name="name" />
+            <input type="email" name="email" />
+            <input type="text" name="company" />
+            <input type="text" name="app-name" />
+            <input type="text" name="bot-field" />
+          </form>
+          <form name="contact-form" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+            <input type="hidden" name="form-name" value="contact-form" />
+            <input type="text" name="name" />
+            <input type="email" name="email" />
+            <input type="text" name="company" />
+            <textarea name="message"></textarea>
+            <input type="text" name="bot-field" />
+          </form>
           <Main />
           <NextScript />
         </body>
