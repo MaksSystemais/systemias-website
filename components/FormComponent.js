@@ -22,7 +22,7 @@ const FormComponent = ({
     },
     contact: {
       title: 'Get in Touch',
-      description: 'Have a question or want to discuss a project? Fill out the form below and we\'ll get back to you soon.',
+      description: 'Have a question or want to discuss a project? Fill out the form below and we&apos;ll get back to you soon.',
       submitButtonText: 'Send Message',
       successRedirect: '/contact-success',
       formName: 'contact-form'
@@ -126,7 +126,7 @@ const FormComponent = ({
         {formType === 'download' && <input type="hidden" name="app-name" value={appName} />}
         <p className="hidden">
           <label>
-            Don't fill this out if you're human: <input name="bot-field" />
+            Don&apos;t fill this out if you&apos;re human: <input name="bot-field" />
           </label>
         </p>
 

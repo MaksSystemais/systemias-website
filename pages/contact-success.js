@@ -43,7 +43,7 @@ export default function ContactSuccess({ globalData }) {
         {/* Confirmation Message */}
         <div className="bg-gradient-to-br from-green-50 to-yellow-50 dark:from-green-900/20 dark:to-yellow-900/20 rounded-lg border border-green-200 dark:border-green-800 p-8 mb-8">
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-            We've received your message
+            We have received your message
           </h2>
           <p className="text-gray-700 dark:text-gray-300 mb-4">
             Thank you for contacting Systemais. We appreciate your interest and will get back to you as soon as possible, typically within 1-2 business days.
@@ -59,7 +59,7 @@ export default function ContactSuccess({ globalData }) {
               <svg className="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
-              <span>We'll review your inquiry and respond promptly</span>
+              <span>We&apos;ll review your inquiry and respond promptly</span>
             </p>
             <p className="flex items-start">
               <svg className="w-5 h-5 text-green-600 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
@@ -99,7 +99,7 @@ export default function ContactSuccess({ globalData }) {
                   We prepare a response
                 </h3>
                 <p className="text-sm">
-                  Depending on your inquiry, we'll gather the necessary information or prepare a detailed response.
+                  Depending on your inquiry, we&apos;ll gather the necessary information or prepare a detailed response.
                 </p>
               </div>
             </div>
@@ -113,7 +113,7 @@ export default function ContactSuccess({ globalData }) {
                   We get in touch
                 </h3>
                 <p className="text-sm">
-                  You'll receive a personalized response via email within 1-2 business days.
+                  You&apos;ll receive a personalized response via email within 1-2 business days.
                 </p>
               </div>
             </div>
