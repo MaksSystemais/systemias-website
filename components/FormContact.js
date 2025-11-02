@@ -7,7 +7,7 @@ const FormContact = () => {
         Get in Touch
       </h3>
       <p className="mb-6 text-gray-700 dark:text-gray-300">
-        Have a question or want to discuss a project? Fill out the form below and we'll get back to you soon.
+        Have a question or want to discuss a project? Fill out the form below and we will get back to you soon.
       </p>
       
       <form 
@@ -23,7 +23,7 @@ const FormContact = () => {
         {/* Honeypot field for spam prevention */}
         <p className="hidden">
           <label>
-            Don't fill this out if you're human: <input name="bot-field" />
+            Do not fill this out if you are human: <input name="bot-field" />
           </label>
         </p>
 
