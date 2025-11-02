@@ -11,14 +11,14 @@ const FormContact = () => {
       </p>
       
       <form 
-        name="contact" 
+        name="contact-form" 
         method="POST" 
         action="/contact-success"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
       >
         {/* Hidden field for Netlify Forms */}
-        <input type="hidden" name="form-name" value="contact" />
+        <input type="hidden" name="form-name" value="contact-form" />
         
         {/* Honeypot field for spam prevention */}
         <p className="hidden">
