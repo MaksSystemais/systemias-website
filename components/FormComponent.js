@@ -72,6 +72,11 @@ const FormComponent = ({
     } else if (!validateEmail(formData.email)) {
       newErrors.email = 'Please enter a valid email address';
     }
+    
+    // Validate message field if it's required (for contact form)
+    if (showMessageField && !formData.message) {
+      newErrors.message = 'Message is required';
+    }
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -83,21 +88,36 @@ const FormComponent = ({
     try {
       // Submit to Netlify Forms
       const formElement = e.target;
+      
+      // Manually encode form data to ensure all fields are properly included
       const formDataToSend = new FormData(formElement);
+      const encodedData = new URLSearchParams();
+      
+      // Explicitly add all form fields
+      for (const [key, value] of formDataToSend) {
+        encodedData.append(key, value);
+      }
+      
+      console.log('Submitting form with data:', Object.fromEntries(encodedData));
       
       const response = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formDataToSend).toString()
+        body: encodedData.toString()
       });
 
-      if (response.ok) {
-        // Redirect to success page
-        const redirectUrl = successRedirect || config.successRedirect;
-        window.location.href = redirectUrl;
-      } else {
-        throw new Error('Form submission failed');
+      console.log('Response status:', response.status);
+      console.log('Response ok:', response.ok);
+
+      if (!response.ok) {
+        const responseText = await response.text();
+        console.error('Response error text:', responseText);
+        throw new Error(`Form submission failed with status: ${response.status}`);
       }
+
+      // Redirect to success page
+      const redirectUrl = successRedirect || config.successRedirect;
+      window.location.href = redirectUrl;
     } catch (error) {
       console.error('Error submitting form:', error);
       setErrors({ submit: 'Something went wrong. Please try again.' });
