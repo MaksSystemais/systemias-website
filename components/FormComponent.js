@@ -41,6 +41,7 @@ const FormComponent = ({
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
+  const iframeRef = React.useRef(null);
 
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -62,9 +63,7 @@ const FormComponent = ({
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    
+  const handleSubmit = (e) => {
     // Validate form
     const newErrors = {};
     if (!formData.email) {
@@ -79,50 +78,19 @@ const FormComponent = ({
     }
 
     if (Object.keys(newErrors).length > 0) {
+      e.preventDefault(); // Only prevent if validation fails
       setErrors(newErrors);
       return;
     }
 
     setIsSubmitting(true);
 
-    try {
-      // Submit to Netlify Forms
-      const formElement = e.target;
-      
-      // Manually encode form data to ensure all fields are properly included
-      const formDataToSend = new FormData(formElement);
-      const encodedData = new URLSearchParams();
-      
-      // Explicitly add all form fields
-      for (const [key, value] of formDataToSend) {
-        encodedData.append(key, value);
-      }
-      
-      console.log('Submitting form with data:', Object.fromEntries(encodedData));
-      
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encodedData.toString()
-      });
-
-      console.log('Response status:', response.status);
-      console.log('Response ok:', response.ok);
-
-      if (!response.ok) {
-        const responseText = await response.text();
-        console.error('Response error text:', responseText);
-        throw new Error(`Form submission failed with status: ${response.status}`);
-      }
-
-      // Redirect to success page
+    // Allow form to submit naturally to hidden iframe
+    // Netlify will handle the submission
+    setTimeout(() => {
       const redirectUrl = successRedirect || config.successRedirect;
       window.location.href = redirectUrl;
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      setErrors({ submit: 'Something went wrong. Please try again.' });
-      setIsSubmitting(false);
-    }
+    }, 1000); // Give Netlify time to process the submission
   };
 
   return (
@@ -134,9 +102,18 @@ const FormComponent = ({
         {description || config.description}
       </p>
       
+      <iframe 
+        name="hidden_iframe" 
+        ref={iframeRef}
+        style={{ display: 'none' }}
+        title="hidden iframe"
+      ></iframe>
+      
       <form 
         name={config.formName}
-        method="POST" 
+        method="POST"
+        action="/"
+        target="hidden_iframe"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
         onSubmit={handleSubmit}
