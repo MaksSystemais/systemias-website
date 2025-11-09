@@ -15,6 +15,12 @@ class MyDocument extends Document {
           <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
           <meta name="theme-color" content="#ffffff" />
           <meta name="msapplication-TileColor" content="#ffffff" />
+          <script
+            defer
+            data-website-id="dfid_LB7LnVivnmaFXBQhD8Sqf"
+            data-domain="systemais.co.uk"
+            src="https://datafa.st/js/script.js"
+          />
         </Head>
         <body
           className={`antialiased text-lg bg-white dark:bg-black dark:text-white leading-base`}
